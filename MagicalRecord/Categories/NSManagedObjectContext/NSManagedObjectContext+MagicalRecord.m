@@ -296,6 +296,14 @@ static id MagicalRecordUbiquitySetupNotificationObserver;
     MRLogInfo(@"Set root saving context: %@", MagicalRecordRootSavingContext);
 }
 
+- (void) MR_loadFromFaults:(id)objects
+{
+    for (NSManagedObject *object in objects) {
+        [[self objectWithID:[object objectID]] willAccessValueForKey:nil];
+    }
+}
+
+
 @end
 
 #pragma mark - Deprecated Methods — DO NOT USE
